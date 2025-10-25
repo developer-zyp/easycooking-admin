@@ -27,7 +27,7 @@ class RecipeController extends Controller
     public function getRecipeByCategoryId($category_id)
     {
         $recipes = Recipe::with('category')
-            ->select('id', 'name', 'image', 'view_count', 'fav_count', 'category_id', 'post_id')
+            ->select('id', 'slug', 'name', 'image', 'view_count', 'fav_count', 'category_id', 'post_id')
             ->where('category_id', $category_id)
             ->where('inactive', 0)
             ->get();
@@ -131,7 +131,7 @@ class RecipeController extends Controller
         $page = $request->input('page', 1);
 
         $recipes = Recipe::with('category')
-            ->select('id', 'name', 'image', 'view_count', 'fav_count', 'category_id', 'post_id')
+            ->select('id', 'slug', 'name', 'image', 'view_count', 'fav_count', 'category_id', 'post_id')
             ->where('inactive', 0)
             ->when($query, function ($q) use ($query) {
                 $q->where('name', 'LIKE', "%{$query}%");
@@ -158,7 +158,7 @@ class RecipeController extends Controller
         $page = $request->input('page', 1);
 
         $recipes = Recipe::with('category')
-            ->select('id', 'name', 'image', 'view_count', 'fav_count', 'category_id', 'post_id')
+            ->select('id', 'slug', 'name', 'image', 'view_count', 'fav_count', 'category_id', 'post_id')
             ->where('inactive', 0)
             ->orderBy('created_at', 'desc')
             ->paginate($perPage, ['*'], 'page', $page);
@@ -183,7 +183,7 @@ class RecipeController extends Controller
         $page = $request->input('page', 1);
 
         $recipes = Recipe::with('category')
-            ->select('id', 'name', 'image', 'view_count', 'fav_count', 'category_id', 'post_id')
+            ->select('id', 'slug', 'name', 'image', 'view_count', 'fav_count', 'category_id', 'post_id')
             ->where('inactive', 0)
             ->orderBy('view_count', 'desc')
             ->paginate($perPage, ['*'], 'page', $page);
@@ -208,7 +208,7 @@ class RecipeController extends Controller
         $page = $request->input('page', 1);
 
         $recipes = Recipe::with('category')
-            ->select('id', 'name', 'image', 'view_count', 'fav_count', 'category_id', 'post_id')
+            ->select('id', 'slug', 'name', 'image', 'view_count', 'fav_count', 'category_id', 'post_id')
             ->where('inactive', 0)
             ->whereHas('category', function ($query) {
                 $query->where('type', 2);

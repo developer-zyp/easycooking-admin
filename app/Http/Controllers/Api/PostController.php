@@ -118,7 +118,7 @@ class PostController extends Controller
         $post = Post::with([
             'images',
             'recipes' => function ($query) {
-                $query->select('id', 'name', 'image', 'view_count', 'fav_count', 'category_id', 'post_id')
+                $query->select('id', 'slug', 'name', 'image', 'view_count', 'fav_count', 'category_id', 'post_id')
                     ->with('category');
             },
             'reviews' => function ($query) {
@@ -146,7 +146,7 @@ class PostController extends Controller
         $post = Post::with([
             'images',
             'recipes' => function ($query) {
-                $query->select('id', 'name', 'image', 'view_count', 'fav_count', 'category_id', 'post_id')
+                $query->select('id', 'slug', 'name', 'image', 'view_count', 'fav_count', 'category_id', 'post_id')
                     ->with('category');
             },
             'reviews' => function ($query) {
