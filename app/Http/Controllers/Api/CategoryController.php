@@ -22,7 +22,7 @@ class CategoryController extends Controller
         //     ->get();
         $categories = Category::where('type', $type)
             ->where('inactive', 0)
-            ->orderBy('created_at', 'desc')
+            ->orderBy('created_at', 'asc')
             ->select('id', 'name', 'image')
             ->get();
 
