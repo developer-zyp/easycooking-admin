@@ -86,6 +86,7 @@ class PostController extends AdminController
             ->options(['published' => 'published', 'draft' => 'draft', 'archived' => 'archived'])
             ->default('published');
         $form->number('view_count', __('View count'))->default(1);
+        $form->datetime('created_at', __('Created at'))->default(date('Y-m-d H:i:s'));
 
         $form->hasMany('images', 'Post Images', function (Form\NestedForm $imageForm) {
             $imageForm->text('name', __('Name'))

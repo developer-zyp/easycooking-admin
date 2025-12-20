@@ -122,6 +122,7 @@ class RecipeController extends AdminController
         $form->number('view_count', __('View count'))->default(1);
         $form->number('fav_count', __('Fav count'))->default(1);
         $form->switch('inactive', __('Inactive'));
+        $form->datetime('created_at', __('Created at'))->default(date('Y-m-d H:i:s'));
 
         $form->hasMany('images', 'Recipe Images', function (Form\NestedForm $imageForm) {
             $imageForm->text('name', __('Name'))

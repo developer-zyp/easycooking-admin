@@ -76,6 +76,7 @@ class CategoryController extends AdminController
             ->options([0 => 'Recipe', 1 => 'Snack', 2 => 'Kitchen Help'])
             ->default(0);
         $form->switch('inactive', __('Inactive'));
+        $form->datetime('created_at', __('Created at'))->default(date('Y-m-d H:i:s'));
 
         return $form;
     }
